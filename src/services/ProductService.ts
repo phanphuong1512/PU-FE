@@ -1,14 +1,13 @@
-import axios from "axios";
-import { type Product } from "../types/Product";
+import { api } from "./api";
+import type { Product } from "../types/product";
 
-const API_URL = "https://localhost:5000/api/products"; // chỉnh lại port backend của bạn
-
-export const getAllProducts = async (): Promise<Product[]> => {
-  const res = await axios.get(API_URL);
-  return res.data;
-};
-
-export const getProductById = async (id: number): Promise<Product> => {
-  const res = await axios.get(`${API_URL}/${id}`);
-  return res.data;
+export const productService = {
+  getAll: async (): Promise<Product[]> => {
+    const res = await api.get<Product[]>("/products");
+    return res.data;
+  },
+  getById: async (id: number): Promise<Product> => {
+    const res = await api.get<Product>(`/products/${id}`);
+    return res.data;
+  },
 };

@@ -1,14 +1,18 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import ProductDetailPage from "./pages/ProductDetailPage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/home/HomePage";
+import ProductList from "./pages/product/ProductList";
+import ProductDetail from "./pages/product/ProductDetail";
 
-export default function App() {
+function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/products/:id" element={<ProductDetailPage />} />
+        <Route path="/products" element={<ProductList />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
+
+export default App;
